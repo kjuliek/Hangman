@@ -1,4 +1,4 @@
-package readtxt
+package printhangman
 
 import (
 	"bufio"
