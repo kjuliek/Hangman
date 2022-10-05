@@ -3,6 +3,8 @@ package shangman
 import (
 	"fmt"
 	"hangman/printhangman"
+	"hangman/printmot"
+	"hangman/revealLetters"
 )
 
 func Deja_Affichee(Hangman *Hangman, lettre string) bool {
@@ -17,10 +19,11 @@ func Deja_Affichee(Hangman *Hangman, lettre string) bool {
 func Pendu(Hangman *Hangman) {
 	var lettre string
 	lettredanslemot := false
+	lettreajoutee := false
 
 	fmt.Print("choisissez une lettre : ")
 	fmt.Scan(&lettre)
-	for i := 0; i < len(Hangman.Mot_de_Depart); i++ {
+	for i := 0; i < len(Hangman.Mot_de_Depart) && !lettreajoutee; i++ {
 		if lettre == string(Hangman.Mot_de_Depart[i]) {
 			lettredanslemot = true
 			if Deja_Affichee(Hangman, lettre) {
@@ -28,7 +31,10 @@ func Pendu(Hangman *Hangman) {
 				fmt.Println("Oh non ! La lettre a déjà été affiché, il te reste ", Hangman.Attempts, " essais.")
 				printhangman.PrintHangman(Hangman.Attempts)
 			} else {
+				Hangman.Mot_Afficher = revealLetters.AddLetter(lettre, Hangman.Mot_Afficher, Hangman.Mot_de_Depart)
+				printmot.Printmot(Hangman.Mot_Afficher)
 				printhangman.PrintHangman(Hangman.Attempts)
+				lettreajoutee = true
 			}
 		}
 
