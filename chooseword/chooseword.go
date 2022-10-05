@@ -18,7 +18,7 @@ func ChooseWord() string {
 
 	scanner := bufio.NewScanner(mots)
 
-	nbwords := 1
+	nbwords := 0
 
 	for scanner.Scan() {
 		nbwords++

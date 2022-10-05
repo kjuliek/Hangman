@@ -1,20 +1,20 @@
 package revealLetters
 
 import (
-	"fmt"
 	"math/rand"
 	"time"
 )
 
-func ReveallettersStart(Mot string) {
+func ReveallettersStart(mot string) string {
 
-	Nb_Lettre_To_Reveal := (len(Mot) / 2) - 1
+	new_mot := ""
+	Nb_Lettre_To_Reveal := (len(mot) / 2) - 1
 	Position_deja_reveal := []int{}
 	rand.Seed(time.Now().UTC().UnixNano())
 	Verification := true
 
 	for i := 0; i < Nb_Lettre_To_Reveal; i++ {
-		Pose_Tmp := rand.Intn(len(Mot))
+		Pose_Tmp := rand.Intn(len(mot))
 		Verification = true
 
 		for j := 0; j < len(Position_deja_reveal); j++ {
@@ -26,22 +26,28 @@ func ReveallettersStart(Mot string) {
 
 		if Verification {
 			Position_deja_reveal = append(Position_deja_reveal, Pose_Tmp)
-			fmt.Println(string(Mot[Pose_Tmp]))
+			// fmt.Println(string(Mot[Pose_Tmp]))
 		}
 	}
-	fmt.Println(Position_deja_reveal)
+	// fmt.Println(Position_deja_reveal)
 
-	for i := 0; i < len(Mot); i++ {
+	for i := 0; i < len(mot); i++ {
 		Verification = true
 		for j := 0; j < len(Position_deja_reveal); j++ {
-			if Mot[i] == Mot[Position_deja_reveal[j]] {
-				fmt.Print(string(Mot[i]))
+			if mot[i] == mot[Position_deja_reveal[j]] {
+				// fmt.Print(string(Mot[i]))
+				new_mot = new_mot + string(mot[i])
 				Verification = false
+				break
 			}
 		}
 		if Verification {
-			fmt.Printf("_")
+			// fmt.Printf("_")
+			new_mot = new_mot + "_"
 		}
-		fmt.Printf(" ")
+		// fmt.Printf(" ")
+		new_mot = new_mot + " "
 	}
+	// fmt.Println()
+	return new_mot
 }
