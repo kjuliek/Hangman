@@ -8,7 +8,6 @@ import (
 )
 
 func PrintHangman(nbattempts int) {
-	//voir si obligé de mettre lastline aussi vu qu'ils feront tous la même taille
 	if nbattempts != 10 {
 		firstline := (9-nbattempts)*7 + 1
 		text, err := os.Open("Pendus.txt")
