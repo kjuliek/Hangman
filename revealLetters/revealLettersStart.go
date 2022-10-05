@@ -46,7 +46,7 @@ func ReveallettersStart(mot string) string {
 			new_mot = new_mot + "_"
 		}
 		// fmt.Printf(" ")
-		new_mot = new_mot + " "
+		// new_mot = new_mot + " "
 	}
 	// fmt.Println()
 	return new_mot
