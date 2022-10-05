@@ -25,7 +25,7 @@ func Pendu(Hangman *Hangman) {
 			lettredanslemot = true
 			if Deja_Affichee(Hangman, lettre) {
 				Hangman.Attempts--
-				fmt.Println("Oh non ! La lettre a déjà été affiché, il te reste ", hangman.Attempts, " essais.")
+				fmt.Println("Oh non ! La lettre a déjà été affiché, il te reste ", Hangman.Attempts, " essais.")
 				printhangman.PrintHangman(Hangman.Attempts)
 			} else {
 				printhangman.PrintHangman(Hangman.Attempts)
