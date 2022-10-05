@@ -2,8 +2,7 @@ package pendu
 
 import "fmt"
 
-func Pendu() string {
-	mot := "bonjour"
+func Pendu(mot string) string {
 	var lettre string
 
 	fmt.Print("choisissez une lettre : ")
