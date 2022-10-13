@@ -31,6 +31,11 @@ func Pendu(Hangman *Hangman) {
 		file, _ := json.Marshal(Hangman)
 		_ = ioutil.WriteFile("Save.json", file, 0644)
 		Hangman.InGame = false
+	} else if lettre == Hangman.Mot_de_Depart {
+		fmt.Println("Bravo , vous avez gagnez")
+		Hangman.InGame = false
+	} else if len(lettre) > 1 {
+		Hangman.Attempts = Hangman.Attempts - 1
 	}
 
 	for i := 0; i < len(Hangman.Mot_de_Depart) && !lettreAjoutee && Hangman.InGame; i++ {
