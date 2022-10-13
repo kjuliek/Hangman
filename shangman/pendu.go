@@ -24,7 +24,8 @@ func Pendu(Hangman *Hangman) {
 	lettreDansLeMot := false
 	lettreAjoutee := false
 	fmt.Println("Si vous souhaitez quitter la partie écrivez : stop")
-	fmt.Print("Choisissez une lettre : ")
+	fmt.Println("Lettres tenté :", Hangman.Lettres_Tentees)
+	fmt.Print("Choisissez une lettre qui n'as pas deja étais tenté :")
 	fmt.Scan(&lettre)
 
 	if lettre == "stop" {
@@ -36,6 +37,19 @@ func Pendu(Hangman *Hangman) {
 		Hangman.InGame = false
 	} else if len(lettre) > 1 {
 		Hangman.Attempts = Hangman.Attempts - 1
+	} else if len(lettre) == 1 {
+		Found := false
+		for i := 0; i < len(Hangman.Lettres_Tentees); i++ {
+			if lettre == string(Hangman.Lettres_Tentees[i]) {
+				Found = true
+			}
+		}
+		if Found {
+			fmt.Println("La lettre a deja été tenté, veuillez réessayer")
+			Hangman.Attempts++
+		} else {
+			Hangman.Lettres_Tentees = Hangman.Lettres_Tentees + lettre + " "
+		}
 	}
 
 	for i := 0; i < len(Hangman.Mot_de_Depart) && !lettreAjoutee && Hangman.InGame; i++ {
