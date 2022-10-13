@@ -4,9 +4,19 @@ import (
 	"fmt"
 	"hangman/printmot"
 	"hangman/shangman"
+	"os"
 )
 
 func main() {
+	fmt.Print("\033[H\033[2J")
+
+	if len(os.Args) > 2 {
+		fmt.Println("Trop d'information en parammettre")
+		return
+	} else if len(os.Args) < 2 {
+		fmt.Println("Il manque le nom du fichier txt pour recuperer les mots")
+		return
+	}
 
 	var Hangman *shangman.Hangman = new(shangman.Hangman)
 
