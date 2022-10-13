@@ -24,6 +24,7 @@ func main() {
 	if string(os.Args[1]) == "Save.json" || string(os.Args[1]) == ".\\Save.json" {
 		data, _ := ioutil.ReadFile("Save.json")
 		json.Unmarshal(data, Hangman)
+		printmot.Printmot(Hangman.Mot_Afficher)
 	} else {
 		Hangman = shangman.InitHangman()
 		printmot.Printmot(Hangman.Mot_Afficher)
@@ -37,6 +38,7 @@ func main() {
 		fmt.Println("Félicitation ! Tu as gagné !")
 	} else if !Hangman.InGame {
 		fmt.Println("La partie a éte sauvegardée")
+		fmt.Println("Pour recharger la partie faites : go run .\\main.go .\\Save.json")
 	} else {
 		fmt.Println("Oh non ! Tu es dcd !")
 		fmt.Println("Le mot était :", Hangman.Mot_de_Depart)
