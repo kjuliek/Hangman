@@ -1,10 +1,12 @@
 package shangman
 
 import (
+	"encoding/json"
 	"fmt"
 	"hangman/printhangman"
 	"hangman/printmot"
 	"hangman/revealLetters"
+	"io/ioutil"
 )
 
 func Deja_Affichee(Hangman *Hangman, lettre string) bool {
@@ -25,6 +27,8 @@ func Pendu(Hangman *Hangman) {
 	fmt.Scan(&lettre)
 
 	if lettre == "stop" {
+		file, _ := json.Marshal(Hangman)
+		_ = ioutil.WriteFile("Save.json", file, 0644)
 		Hangman.InGame = false
 	}
 
