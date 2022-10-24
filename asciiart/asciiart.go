@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func TriMot(word string) string {
+func sort_word(word string) string {
 	var ref []rune
 	var newword string
 	ref = append(ref, '_')
@@ -26,7 +26,7 @@ func TriMot(word string) string {
 }
 
 func TabAsciiA(Mot_de_Depart string) [][]string {
-	newword := "_" + TriMot(Mot_de_Depart)
+	newword := "_" + sort_word(starting_word)
 	var tab [][]string
 
 	text, err := os.Open("alphabet.txt")
