@@ -24,10 +24,10 @@ func main() {
 	if string(os.Args[1]) == "Save.json" || string(os.Args[1]) == ".\\Save.json" {
 		data, _ := ioutil.ReadFile("Save.json")
 		json.Unmarshal(data, Hangman)
-		printmot.Printmot(Hangman.Mot_Afficher)
+		printmot.PrintAsciiArt(Hangman.Mot_de_Depart, Hangman.Mot_Afficher, Hangman.Lettres_Ascii_Art)
 	} else {
 		Hangman = shangman.InitHangman()
-		printmot.Printmot(Hangman.Mot_Afficher)
+		printmot.PrintAsciiArt(Hangman.Mot_de_Depart, Hangman.Mot_Afficher, Hangman.Lettres_Ascii_Art)
 	}
 
 	for Hangman.Mot_Afficher != Hangman.Mot_de_Depart && Hangman.Attempts > 0 && Hangman.InGame {

@@ -37,28 +37,31 @@ func TabAsciiA(Mot_de_Depart string) [][]string {
 
 	scanner := bufio.NewScanner(text)
 
-	line := 1
+	var ascii []string
+	for scanner.Scan() {
+		ascii = append(ascii, scanner.Text())
+	}
 
+	line := 1
 	for _, letter := range newword {
 		var lettreascii []string
 		cmpt := 1
+
 		firstline := 1
 		if string(letter) == "_" {
 			firstline = 1
 		} else {
 			firstline = (int(rune(letter))-96)*12 + 1
 		}
-		for scanner.Scan() && cmpt < 13 {
-
-			if line >= firstline && line <= firstline+12 {
-				lettreascii = append(lettreascii, scanner.Text())
+		for cmpt <= 12 {
+			if line >= firstline && line <= firstline+11 {
+				lettreascii = append(lettreascii, ascii[line])
 				cmpt++
-			} else {
-				scanner.Text()
 			}
 			line++
 		}
 		tab = append(tab, lettreascii)
+
 	}
 	return tab
 }
