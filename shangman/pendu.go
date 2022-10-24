@@ -34,8 +34,9 @@ func Pendu(Hangman *Hangman) {
 		_ = ioutil.WriteFile("Save.json", file, 0644)
 		Hangman.InGame = false
 	} else if lettre == Hangman.Mot_de_Depart {
+		printmot.PrintAsciiArt(Hangman.Mot_de_Depart, Hangman.Mot_de_Depart, Hangman.Lettres_Ascii_Art)
 		fmt.Println("Bravo , vous avez gagnez")
-		Hangman.InGame = false
+		Hangman.Win = true
 	} else if len(lettre) > 1 {
 		Hangman.Attempts = Hangman.Attempts - 1
 	} else if len(lettre) == 1 {
@@ -55,7 +56,7 @@ func Pendu(Hangman *Hangman) {
 		}
 	}
 
-	for i := 0; i < len(Hangman.Mot_de_Depart) && !lettreAjoutee && Hangman.InGame; i++ {
+	for i := 0; i < len(Hangman.Mot_de_Depart) && !lettreAjoutee && Hangman.InGame && !Hangman.Win; i++ {
 		if lettre == string(Hangman.Mot_de_Depart[i]) {
 			lettreDansLeMot = true
 
@@ -73,7 +74,7 @@ func Pendu(Hangman *Hangman) {
 		}
 	}
 
-	if !lettreDansLeMot && Hangman.InGame {
+	if !lettreDansLeMot && Hangman.InGame && !Hangman.Win {
 		Hangman.Attempts--
 		printmot.PrintAsciiArt(Hangman.Mot_de_Depart, Hangman.Mot_Afficher, Hangman.Lettres_Ascii_Art)
 		fmt.Println("Il te reste ", Hangman.Attempts, " essais.")

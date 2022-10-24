@@ -13,6 +13,7 @@ type Hangman struct {
 	Attempts          int
 	Lettres_a_Trouver int
 	InGame            bool
+	Win               bool
 	Lettres_Ascii_Art [][]string
 }
 
@@ -27,6 +28,7 @@ func InitHangman() *Hangman {
 		Attempts:          10,
 		Lettres_a_Trouver: len(mot),
 		InGame:            true,
+		Win:               false,
 		Lettres_Ascii_Art: lettres_ascii_art,
 	}
 }

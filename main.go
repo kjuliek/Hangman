@@ -30,11 +30,11 @@ func main() {
 		printmot.PrintAsciiArt(Hangman.Mot_de_Depart, Hangman.Mot_Afficher, Hangman.Lettres_Ascii_Art)
 	}
 
-	for Hangman.Mot_Afficher != Hangman.Mot_de_Depart && Hangman.Attempts > 0 && Hangman.InGame {
+	for Hangman.Mot_Afficher != Hangman.Mot_de_Depart && Hangman.Attempts > 0 && Hangman.InGame && !Hangman.Win {
 		shangman.Pendu(Hangman)
 	}
 
-	if Hangman.Mot_Afficher == Hangman.Mot_de_Depart {
+	if Hangman.Mot_Afficher == Hangman.Mot_de_Depart || Hangman.Win {
 		fmt.Println("Félicitation ! Tu as gagné !")
 	} else if !Hangman.InGame {
 		fmt.Println("La partie a éte sauvegardée")
