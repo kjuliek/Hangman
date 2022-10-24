@@ -60,13 +60,13 @@ func Pendu(Hangman *Hangman) {
 			lettreDansLeMot = true
 
 			if Deja_Affichee(Hangman, lettre) {
-				printmot.Printmot(Hangman.Mot_Afficher)
+				printmot.PrintAsciiArt(Hangman.Mot_de_Depart, Hangman.Mot_Afficher, Hangman.Lettres_Ascii_Art)
 				Hangman.Attempts--
 				fmt.Println("Oh non ! La lettre a déjà été affiché, il te reste ", Hangman.Attempts, " essais.")
 				printhangman.PrintHangman(Hangman.Attempts)
 			} else {
 				Hangman.Mot_Afficher = revealLetters.AddLetter(lettre, Hangman.Mot_Afficher, Hangman.Mot_de_Depart)
-				printmot.Printmot(Hangman.Mot_Afficher)
+				printmot.PrintAsciiArt(Hangman.Mot_de_Depart, Hangman.Mot_Afficher, Hangman.Lettres_Ascii_Art)
 				printhangman.PrintHangman(Hangman.Attempts)
 				lettreAjoutee = true
 			}
@@ -75,7 +75,7 @@ func Pendu(Hangman *Hangman) {
 
 	if !lettreDansLeMot && Hangman.InGame {
 		Hangman.Attempts--
-		printmot.Printmot(Hangman.Mot_Afficher)
+		printmot.PrintAsciiArt(Hangman.Mot_de_Depart, Hangman.Mot_Afficher, Hangman.Lettres_Ascii_Art)
 		fmt.Println("Il te reste ", Hangman.Attempts, " essais.")
 		printhangman.PrintHangman(Hangman.Attempts)
 	}
