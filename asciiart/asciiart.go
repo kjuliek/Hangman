@@ -62,7 +62,3 @@ func TabAsciiA(Mot_de_Depart string) [][]string {
 	}
 	return tab
 }
-
-func AsciiArt(mot string) {
-
-}

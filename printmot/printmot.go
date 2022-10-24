@@ -8,3 +8,7 @@ func Printmot(mot string) {
 	}
 	fmt.Println()
 }
+
+func AsciiArt(mot string, lettres_ascii_art [][]string) {
+
+}
