@@ -41,6 +41,7 @@ func main() {
 		fmt.Println("Pour recharger la partie faites : go run .\\main.go .\\Save.json")
 	} else {
 		fmt.Println("Oh non ! Tu es dcd !")
-		fmt.Println("Le mot était :", Hangman.Mot_de_Depart)
+		fmt.Println("Le mot était :")
+		printmot.PrintAsciiArt(Hangman.Mot_de_Depart, Hangman.Mot_de_Depart, Hangman.Lettres_Ascii_Art)
 	}
 }
