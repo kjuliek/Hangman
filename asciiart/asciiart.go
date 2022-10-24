@@ -25,7 +25,7 @@ func sort_word(word string) string {
 	return newword
 }
 
-func TabAsciiA(Mot_de_Depart string) [][]string {
+func TabAsciiA(starting_word string) [][]string {
 	newword := "_" + sort_word(starting_word)
 	var tab [][]string
 
