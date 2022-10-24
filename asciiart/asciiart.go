@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func sortword(word string) string {
+func Sortword(word string) string {
 	var ref []rune
 	var newword string
 	ref = append(ref, '_')
