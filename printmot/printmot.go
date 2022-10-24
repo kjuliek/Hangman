@@ -1,24 +1,23 @@
-package printmot
+package printword
 
 import (
 	"fmt"
-	"hangman/asciiart"
 )
 
-func Printmot(mot string) {
-	for i := 0; i < len(mot); i++ {
-		fmt.Print(string(mot[i]), " ")
+func Printword(word string) {
+	for i := 0; i < len(word); i++ {
+		fmt.Print(string(word[i]), " ")
 	}
 	fmt.Println()
 }
 
-func PrintAsciiArt(mot_de_depart, mot_afficher string, lettres_ascii_art [][]string) {
-	mot_trie := "_" + asciiart.TriMot(mot_de_depart)
+func PrintAsciiArt(starting_word, shown_word string, letter_ascii_art [][]string) {
+	sort_word := "_" + asciiart.sort_word(starting_word)
 	for k := 0; k < 12; k++ {
-		for _, letter := range mot_afficher {
-			for i, l := range mot_trie {
+		for _, letter := range shown_word {
+			for i, l := range sort_word {
 				if letter == l {
-					fmt.Print(lettres_ascii_art[i][k])
+					fmt.Print(letter_ascii_art[i][k])
 				}
 			}
 		}
