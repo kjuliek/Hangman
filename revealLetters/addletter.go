@@ -1,15 +1,15 @@
 package revealLetters
 
-func AddLetter(letter, Mot_Afficher, Mot_de_Depart string) string {
-	var new_mot string
+func AddLetter(letter, shown_word, starting_word string) string {
+	var new_word string
 
-	for index, l := range Mot_Afficher {
-		if letter == string(Mot_de_Depart[index]) {
-			new_mot += letter
+	for index, l := range shown_word {
+		if letter == string(starting_word[index]) {
+			new_word += letter
 		} else {
-			new_mot += string(l)
+			new_word += string(l)
 		}
 	}
 
-	return new_mot
+	return new_word
 }
