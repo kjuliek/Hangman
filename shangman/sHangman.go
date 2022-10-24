@@ -7,28 +7,28 @@ import (
 )
 
 type Hangman struct {
-	Mot_de_Depart     string
-	Mot_Afficher      string
-	Lettres_Tentees   string
+	Starting_Word     string
+	Displayed_Word    string
+	Letters_Attempted string
 	Attempts          int
-	Lettres_a_Trouver int
+	Letters_to_Find   int
 	InGame            bool
 	Win               bool
-	Lettres_Ascii_Art [][]string
+	Letters_Ascii_Art [][]string
 }
 
 func InitHangman() *Hangman {
-	mot := chooseword.ChooseWord()
-	mot_Afficher := revealLetters.ReveallettersStart(mot)
-	lettres_ascii_art := asciiart.TabAsciiA(mot)
+	word := chooseword.ChooseWord()
+	displayed_Word := revealLetters.ReveallettersStart(word)
+	letters_ascii_art := asciiart.TabAsciiA(word)
 	return &Hangman{
-		Mot_de_Depart:     mot,
-		Mot_Afficher:      mot_Afficher,
-		Lettres_Tentees:   "",
+		Starting_Word:     word,
+		Displayed_Word:    displayed_Word,
+		Letters_Attempted: "",
 		Attempts:          10,
-		Lettres_a_Trouver: len(mot),
+		Letters_to_Find:   len(word),
 		InGame:            true,
 		Win:               false,
-		Lettres_Ascii_Art: lettres_ascii_art,
+		Letters_Ascii_Art: letters_ascii_art,
 	}
 }

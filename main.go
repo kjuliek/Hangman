@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"hangman/printmot"
+	"hangman/printword"
 	"hangman/shangman"
 	"io/ioutil"
 	"os"
@@ -12,10 +12,10 @@ import (
 func main() {
 	fmt.Print("\033[H\033[2J")
 	if len(os.Args) > 2 {
-		fmt.Println("Trop d'information en parammettre")
+		fmt.Println("Too many arguments.")
 		return
 	} else if len(os.Args) < 2 {
-		fmt.Println("Il manque le nom du fichier txt pour recuperer les mots")
+		fmt.Println("Text file is missing.")
 		return
 	}
 
@@ -24,24 +24,24 @@ func main() {
 	if string(os.Args[1]) == "Save.json" || string(os.Args[1]) == ".\\Save.json" {
 		data, _ := ioutil.ReadFile("Save.json")
 		json.Unmarshal(data, Hangman)
-		printmot.PrintAsciiArt(Hangman.Mot_de_Depart, Hangman.Mot_Afficher, Hangman.Lettres_Ascii_Art)
+		printword.PrintAsciArt(Hangman.Starting_Word, Hangman.Displayed_Word, Hangman.Letters_Ascii_Art)
 	} else {
 		Hangman = shangman.InitHangman()
-		printmot.PrintAsciiArt(Hangman.Mot_de_Depart, Hangman.Mot_Afficher, Hangman.Lettres_Ascii_Art)
+		printword.PrintAsciArt(Hangman.Starting_Word, Hangman.Displayed_Word, Hangman.Letters_Ascii_Art)
 	}
 
-	for Hangman.Mot_Afficher != Hangman.Mot_de_Depart && Hangman.Attempts > 0 && Hangman.InGame && !Hangman.Win {
+	for Hangman.Displayed_Word != Hangman.Starting_Word && Hangman.Attempts > 0 && Hangman.InGame && !Hangman.Win {
 		shangman.Pendu(Hangman)
 	}
 
-	if Hangman.Mot_Afficher == Hangman.Mot_de_Depart || Hangman.Win {
-		fmt.Println("Félicitation ! Tu as gagné !")
+	if Hangman.Displayed_Word == Hangman.Starting_Word || Hangman.Win {
+		fmt.Println("Congratulation ! You win !")
 	} else if !Hangman.InGame {
-		fmt.Println("La partie a éte sauvegardée")
-		fmt.Println("Pour recharger la partie faites : go run .\\main.go .\\Save.json")
+		fmt.Println("The game has been saved.")
+		fmt.Println("To resume the game, do : go run .\\main.go .\\Save.json")
 	} else {
-		fmt.Println("Oh non ! Tu es dcd !")
-		fmt.Println("Le mot était :")
-		printmot.PrintAsciiArt(Hangman.Mot_de_Depart, Hangman.Mot_de_Depart, Hangman.Lettres_Ascii_Art)
+		fmt.Println("Oh no ! You died !")
+		fmt.Println("The word was :")
+		printword.PrintAsciArt(Hangman.Starting_Word, Hangman.Starting_Word, Hangman.Letters_Ascii_Art)
 	}
 }

@@ -11,13 +11,13 @@ import (
 func ChooseWord() string {
 	var words []string
 	rand.Seed(time.Now().UTC().UnixNano())
-	mots, err := os.Open(string(os.Args[1]))
+	word, err := os.Open(string(os.Args[1]))
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	scanner := bufio.NewScanner(mots)
+	scanner := bufio.NewScanner(word)
 	nbwords := 0
 
 	for scanner.Scan() {

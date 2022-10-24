@@ -10,7 +10,7 @@ import (
 func PrintHangman(nbattempts int) {
 	if nbattempts != 10 {
 		firstline := (9-nbattempts)*7 + 1
-		text, err := os.Open("Pendus.txt")
+		text, err := os.Open("Hangman.txt")
 
 		if err != nil {
 			log.Fatal(err)

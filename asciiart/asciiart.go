@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func Sortword(word string) string {
+func SortWord(word string) string {
 	var ref []rune
 	var newword string
 	ref = append(ref, '_')
@@ -26,7 +26,7 @@ func Sortword(word string) string {
 }
 
 func TabAsciiA(starting_word string) [][]string {
-	newword := "_" + sortword(starting_word)
+	newword := "_" + SortWord(starting_word)
 	var tab [][]string
 
 	text, err := os.Open("alphabet.txt")
