@@ -19,14 +19,15 @@ func Deja_Affichee(Hangman *Hangman, lettre string) bool {
 }
 
 func Pendu(Hangman *Hangman) {
-
 	var lettre string
 	lettreDansLeMot := false
 	lettreAjoutee := false
+
 	fmt.Println("Si vous souhaitez quitter la partie écrivez : stop")
 	fmt.Println("Lettres tenté :", Hangman.Lettres_Tentees)
-	fmt.Print("Choisissez une lettre qui n'as pas deja étais tenté :")
+	fmt.Print("Choisissez une lettre qui n'as pas deja étais tenté : ")
 	fmt.Scan(&lettre)
+	fmt.Print("\033[H\033[2J")
 
 	if lettre == "stop" {
 		file, _ := json.Marshal(Hangman)
@@ -39,11 +40,13 @@ func Pendu(Hangman *Hangman) {
 		Hangman.Attempts = Hangman.Attempts - 1
 	} else if len(lettre) == 1 {
 		Found := false
+
 		for i := 0; i < len(Hangman.Lettres_Tentees); i++ {
 			if lettre == string(Hangman.Lettres_Tentees[i]) {
 				Found = true
 			}
 		}
+
 		if Found {
 			fmt.Println("La lettre a deja été tenté, veuillez réessayer")
 			Hangman.Attempts++
@@ -55,6 +58,7 @@ func Pendu(Hangman *Hangman) {
 	for i := 0; i < len(Hangman.Mot_de_Depart) && !lettreAjoutee && Hangman.InGame; i++ {
 		if lettre == string(Hangman.Mot_de_Depart[i]) {
 			lettreDansLeMot = true
+
 			if Deja_Affichee(Hangman, lettre) {
 				printmot.Printmot(Hangman.Mot_Afficher)
 				Hangman.Attempts--
