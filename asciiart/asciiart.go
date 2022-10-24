@@ -54,7 +54,7 @@ func TabAsciiA(Mot_de_Depart string) [][]string {
 			firstline = (int(rune(letter))-96)*12 + 1
 		}
 		for cmpt <= 12 {
-			if line >= firstline && line <= firstline+11 {
+			if line >= firstline && line <= firstline+12 {
 				lettreascii = append(lettreascii, ascii[line])
 				cmpt++
 			}
