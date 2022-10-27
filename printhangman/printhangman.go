@@ -7,8 +7,8 @@ import (
 	"os"
 )
 
-func PrintHangman(nbattempts int) { //affichage du nombre de tentative du joueur avant de mourir
-	if nbattempts != 10 { // nombre de tentative
+func PrintHangman(nbattempts int) { //number of attempts that are left for the player
+	if nbattempts != 10 { // number of attempts
 		firstline := (9-nbattempts)*7 + 1
 		text, err := os.Open("Hangman.txt")
 
