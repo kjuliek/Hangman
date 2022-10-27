@@ -6,22 +6,22 @@ import (
 	"hangman/revealLetters"
 )
 
-type Hangman struct {
-	Starting_Word     string
-	Displayed_Word    string
-	Letters_Attempted string
-	Attempts          int
-	Letters_to_Find   int
+type Hangman struct { // tout les types de variable creer pour le code
+	Starting_Word     string //mot de départ
+	Displayed_Word    string //mot affiché
+	Letters_Attempted string //lettres tentées
+	Attempts          int    //essaie
+	Letters_to_Find   int    //lettres manquantes
 	InGame            bool
 	Win               bool
 	Letters_Ascii_Art [][]string
 }
 
-func InitHangman() *Hangman {
+func InitHangman() *Hangman { //mot choisi aléatoirement dans Words.txt
 	word := chooseword.ChooseWord()
-	displayed_Word := revealLetters.ReveallettersStart(word)
-	letters_ascii_art := asciiart.TabAsciiA(word)
-	return &Hangman{
+	displayed_Word := revealLetters.ReveallettersStart(word) //lettres choisi aléatoirement
+	letters_ascii_art := asciiart.TabAsciiA(word)            //implantation des lettres ascii
+	return &Hangman{                                         //affichage du mot
 		Starting_Word:     word,
 		Displayed_Word:    displayed_Word,
 		Letters_Attempted: "",
