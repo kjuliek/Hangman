@@ -6,11 +6,11 @@ import (
 	"os"
 )
 
-func SortWord(word string) string { //recupération des lettres alphabétiques appartenants au mot choisi
+func SortWord(word string) string { //recuperation of the alphabetic letters for the word chosen
 	var ref []rune
 	var newword string
 	ref = append(ref, '_')
-	for r := 97; r <= 122; r++ { // de a à z
+	for r := 97; r <= 122; r++ { // from a to z
 		ref = append(ref, rune(r))
 	}
 	for _, l := range ref {
@@ -25,7 +25,7 @@ func SortWord(word string) string { //recupération des lettres alphabétiques a
 	return newword
 }
 
-func TabAsciiA(starting_word string) [][]string { // changements des lettres en ascii, incrémentations dans un tableau
+func TabAsciiA(starting_word string) [][]string { // changes in letter ASCII, incremetations in a tab
 	newword := "_" + SortWord(starting_word)
 	var tab [][]string
 
@@ -43,7 +43,7 @@ func TabAsciiA(starting_word string) [][]string { // changements des lettres en 
 	}
 
 	line := 1
-	for _, letter := range newword { //ligne par ligne on inscrit une lettre ascii
+	for _, letter := range newword { //we print line per linE a letter ASCII
 		var lettreascii []string
 		cmpt := 1
 
@@ -51,9 +51,9 @@ func TabAsciiA(starting_word string) [][]string { // changements des lettres en 
 		if string(letter) == "_" {
 			firstline = 1
 		} else {
-			firstline = (int(rune(letter))-96)*12 + 1 //calcul pour afficher une lettre ascii
+			firstline = (int(rune(letter))-96)*12 + 1 //calcul that print a letter ascii
 		}
-		for cmpt <= 12 { //toute les 12 lignes une nouvelle lettre apparait
+		for cmpt <= 12 { //every 12 lines a new letter ascii is printed
 			if line >= firstline && line <= firstline+12 {
 				lettreascii = append(lettreascii, ascii[line])
 				cmpt++

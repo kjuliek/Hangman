@@ -29,20 +29,20 @@ func Pendu(Hangman *Hangman) { //affichage des lettres, du nombres essaies resta
 	fmt.Scan(&letter)
 	fmt.Print("\033[H\033[2J")
 
-	if letter == "stop" { //sauvegarde de la partie
+	if letter == "stop" { //save of the gameplay
 		file, _ := json.Marshal(Hangman)
 		_ = ioutil.WriteFile("Save.json", file, 0644)
 		Hangman.InGame = false
-	} else if letter == Hangman.Starting_Word { //fin de partie, partie gagné
+	} else if letter == Hangman.Starting_Word { //end of the game, winning game
 		printword.PrintAsciArt(Hangman.Starting_Word, Hangman.Starting_Word, Hangman.Letters_Ascii_Art)
 		fmt.Println("Congratulation, you win !")
 		Hangman.Win = true
-	} else if len(letter) > 1 { //mauvaise lettre
+	} else if len(letter) > 1 { //wrong letter
 		Hangman.Attempts = Hangman.Attempts - 1
-	} else if len(letter) == 1 { //ajout de lettre
+	} else if len(letter) == 1 { //add of a letter
 		Found := false
 
-		for i := 0; i < len(Hangman.Letters_Attempted); i++ { //lettre choisi ou deja utilisé
+		for i := 0; i < len(Hangman.Letters_Attempted); i++ { //chosen letter or already used
 			if letter == string(Hangman.Letters_Attempted[i]) {
 				Found = true
 			}
@@ -60,12 +60,12 @@ func Pendu(Hangman *Hangman) { //affichage des lettres, du nombres essaies resta
 		if letter == string(Hangman.Starting_Word[i]) {
 			letterInTheWord = true
 
-			if Allready_Displayed(Hangman, letter) { //lettre erroné, un essaie en moins
+			if Allready_Displayed(Hangman, letter) { //wrong letter, one less attempt
 				printword.PrintAsciArt(Hangman.Starting_Word, Hangman.Displayed_Word, Hangman.Letters_Ascii_Art)
 				Hangman.Attempts--
 				fmt.Println("Oh non ! La lettre a déjà été affiché, il te reste ", Hangman.Attempts, " essais.")
 				printhangman.PrintHangman(Hangman.Attempts)
-			} else { // choix de lettre correcte et ajout de la lettre en AScii
+			} else { // correct letter chosen and adding letters in ASCII
 				Hangman.Displayed_Word = revealLetters.AddLetter(letter, Hangman.Displayed_Word, Hangman.Starting_Word)
 				printword.PrintAsciArt(Hangman.Starting_Word, Hangman.Displayed_Word, Hangman.Letters_Ascii_Art)
 				printhangman.PrintHangman(Hangman.Attempts)
@@ -74,7 +74,7 @@ func Pendu(Hangman *Hangman) { //affichage des lettres, du nombres essaies resta
 		}
 	}
 
-	if !letterInTheWord && Hangman.InGame && !Hangman.Win { //affichage du nombre d'essaies restant
+	if !letterInTheWord && Hangman.InGame && !Hangman.Win { //show of the numbers of attempts the user have left
 		Hangman.Attempts--
 		printword.PrintAsciArt(Hangman.Starting_Word, Hangman.Displayed_Word, Hangman.Letters_Ascii_Art)
 		fmt.Println("Il te reste ", Hangman.Attempts, " essais.")
