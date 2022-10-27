@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func ChooseWord() string {
+func ChooseWord() string { //choix du mot aléatoire dans le fichier Words.txt
 	var words []string
 	rand.Seed(time.Now().UTC().UnixNano())
 	word, err := os.Open(string(os.Args[1]))
