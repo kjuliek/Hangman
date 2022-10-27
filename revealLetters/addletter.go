@@ -1,6 +1,6 @@
 package revealLetters
 
-func AddLetter(letter, shown_word, starting_word string) string { //ajout des lettres du mots affiché à trou
+func AddLetter(letter, shown_word, starting_word string) string { //add letters to the word with wholes in it
 	var new_word string
 
 	for index, l := range shown_word {
