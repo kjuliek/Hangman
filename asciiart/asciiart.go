@@ -6,11 +6,11 @@ import (
 	"os"
 )
 
-func SortWord(word string) string {
+func SortWord(word string) string { //recupération des lettres alphabétiques appartenants au mot choisi
 	var ref []rune
 	var newword string
 	ref = append(ref, '_')
-	for r := 97; r <= 122; r++ {
+	for r := 97; r <= 122; r++ { // de a à z
 		ref = append(ref, rune(r))
 	}
 	for _, l := range ref {
@@ -25,7 +25,7 @@ func SortWord(word string) string {
 	return newword
 }
 
-func TabAsciiA(starting_word string) [][]string {
+func TabAsciiA(starting_word string) [][]string { // changements des lettres en ascii, incrémentations dans un tableau
 	newword := "_" + SortWord(starting_word)
 	var tab [][]string
 
@@ -43,7 +43,7 @@ func TabAsciiA(starting_word string) [][]string {
 	}
 
 	line := 1
-	for _, letter := range newword {
+	for _, letter := range newword { //ligne par ligne on inscrit une lettre ascii
 		var lettreascii []string
 		cmpt := 1
 
@@ -51,9 +51,9 @@ func TabAsciiA(starting_word string) [][]string {
 		if string(letter) == "_" {
 			firstline = 1
 		} else {
-			firstline = (int(rune(letter))-96)*12 + 1
+			firstline = (int(rune(letter))-96)*12 + 1 //calcul pour afficher une lettre ascii
 		}
-		for cmpt <= 12 {
+		for cmpt <= 12 { //toute les 12 lignes une nouvelle lettre apparait
 			if line >= firstline && line <= firstline+12 {
 				lettreascii = append(lettreascii, ascii[line])
 				cmpt++
