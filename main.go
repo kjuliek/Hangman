@@ -9,7 +9,7 @@ import (
 	"os"
 )
 
-func main() {
+func main() { //affichage de la sauvegarde, la partie gagné ou perdue
 	fmt.Print("\033[H\033[2J")
 	if len(os.Args) > 2 {
 		fmt.Println("Too many arguments.")
@@ -34,12 +34,12 @@ func main() {
 		shangman.Pendu(Hangman)
 	}
 
-	if Hangman.Displayed_Word == Hangman.Starting_Word || Hangman.Win {
+	if Hangman.Displayed_Word == Hangman.Starting_Word || Hangman.Win { //partie gagné
 		fmt.Println("Congratulation ! You win !")
-	} else if !Hangman.InGame {
+	} else if !Hangman.InGame { //sauvegarde
 		fmt.Println("The game has been saved.")
 		fmt.Println("To resume the game, do : go run .\\main.go .\\Save.json")
-	} else {
+	} else { //mort du joueur
 		fmt.Println("Oh no ! You died !")
 		fmt.Println("The word was :")
 		printword.PrintAsciArt(Hangman.Starting_Word, Hangman.Starting_Word, Hangman.Letters_Ascii_Art)
