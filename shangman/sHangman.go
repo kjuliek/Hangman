@@ -1,9 +1,9 @@
 package shangman
 
 import (
-	"hangman/asciiart"
-	"hangman/chooseword"
-	"hangman/revealLetters"
+	"hangman/Hangman-Classic/asciiart"
+	"hangman/Hangman-Classic/chooseword"
+	"hangman/Hangman-Classic/revealLetters"
 )
 
 type Hangman struct { // every type of variables that are created for the code

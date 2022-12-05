@@ -3,9 +3,9 @@ package shangman
 import (
 	"encoding/json"
 	"fmt"
-	"hangman/printhangman"
-	"hangman/printword"
-	"hangman/revealLetters"
+	"hangman/Hangman-Classic/printhangman"
+	"hangman/Hangman-Classic/printword"
+	"hangman/Hangman-Classic/revealLetters"
 	"io/ioutil"
 )
 

@@ -3,8 +3,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"hangman/printword"
-	"hangman/shangman"
+	"hangman/Hangman-Classic/printword"
+	"hangman/Hangman-Classic/shangman"
 	"io/ioutil"
 	"os"
 )
