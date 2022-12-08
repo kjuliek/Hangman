@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Hangman-Classic/startingGame"
+	"github.com/kjuliek/Hangman/startingGame"
 	"os"
 )
 

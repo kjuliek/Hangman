@@ -3,8 +3,8 @@ package startingGame
 import (
 	"encoding/json"
 	"fmt"
-	"hangman/Hangman-Classic/printword"
-	"hangman/Hangman-Classic/shangman"
+	"github.com/kjuliek/Hangman/printword"
+	"github.com/kjuliek/Hangman/shangman"
 	"io/ioutil"
 	"os"
 )
