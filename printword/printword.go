@@ -3,7 +3,7 @@ package printword
 import (
 	"fmt"
 
-	"github.com/kjuliek/Hangman/asciiart"
+	"hangman/Hangman-Classic/asciiart"
 )
 
 func PrintWord(word string) { //choice of the word and display of it

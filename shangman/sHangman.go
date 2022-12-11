@@ -1,15 +1,17 @@
 package shangman
 
 import (
-	"github.com/kjuliek/Hangman/asciiart"
-	"github.com/kjuliek/Hangman/chooseword"
-	"github.com/kjuliek/Hangman/revealLetters"
+	"hangman/Hangman-Classic/asciiart"
+	"hangman/Hangman-Classic/chooseword"
+	"hangman/Hangman-Classic/revealLetters"
 )
 
 type Hangman struct { // every type of variables that are created for the code
 	Starting_Word     string
+	Message           string
 	Displayed_Word    string
 	Letters_Attempted string
+	Try               string
 	Attempts          int
 	Letters_to_Find   int
 	InGame            bool

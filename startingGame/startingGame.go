@@ -3,22 +3,14 @@ package startingGame
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/kjuliek/Hangman/printword"
-	"github.com/kjuliek/Hangman/shangman"
+	"hangman/Hangman-Classic/printword"
+	"hangman/Hangman-Classic/shangman"
 	"io/ioutil"
 	"os"
 )
 
 func Start(args []string) {
-	fmt.Print("\033[H\033[2J")
-	if len(os.Args) > 2 {
-		fmt.Println("Too many arguments.")
-		return
-	} else if len(os.Args) < 2 {
-		fmt.Println("Text file is missing.")
-		return
-	}
-
+	ReadArgs(args)
 	var Hangman *shangman.Hangman = new(shangman.Hangman)
 
 	if string(os.Args[1]) == "Save.json" || string(os.Args[1]) == ".\\Save.json" {
